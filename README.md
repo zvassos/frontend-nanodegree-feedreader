@@ -1,4 +1,4 @@
-# Arcade Game Project
+# Feed reader tester
 
 This is my version of the Feed reader tester
 

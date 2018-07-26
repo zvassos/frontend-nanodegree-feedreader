@@ -89,18 +89,19 @@ $(function() {
         /* Use Jasmine's beforeEach and done() for the 
          * asynchronous loadFeed().
          */
+        
         let feedOne, feedTwo;
         beforeEach(function(done){
-            loadFeed(0, function(){
-                feedOne = $('.feed').find(allFeeds.url);
-                done();
-            });
-            loadFeed(1, function(){
-                feedTwo = $('.feed').find(allFeeds.url);
-                done();
+            loadFeed(0, function () {
+           // great place to get content of feed container
+            feedOne = $('.feed').html();
+                loadFeed(1, function () {
+                   // get content of feed container again
+                   feedTwo = $('.feed').html();
+                   done();
+                });
             });
         });
-        
         /* Check if feedOne's links are different from the 
          * links of feedTwo.
          */
@@ -108,5 +109,4 @@ $(function() {
            expect(feedOne).not.toBe(feedTwo); 
         });     
     });
-    
 }());
